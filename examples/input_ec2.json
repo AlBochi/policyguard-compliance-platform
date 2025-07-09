@@ -1,0 +1,6 @@
+{
+  "resource": {
+    "type": "aws_instance",
+    "ami": "ami-1234567890abcdef0"
+  }
+}

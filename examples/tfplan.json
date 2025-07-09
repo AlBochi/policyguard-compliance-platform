@@ -1,0 +1,26 @@
+{
+  "resource_changes": [
+    {
+      "type": "aws_s3_bucket",
+      "name": "example-bucket",
+      "change": {
+        "actions": ["create"],
+        "after": {
+          "encryption": {
+            "enabled": false
+          }
+        }
+      }
+    },
+    {
+      "type": "aws_instance",
+      "name": "example-instance",
+      "change": {
+        "actions": ["create"],
+        "after": {
+          "ami": "ami-1234567890abcdef0"
+        }
+      }
+    }
+  ]
+}

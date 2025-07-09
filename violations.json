@@ -1,0 +1,17 @@
+{
+  "errors": [
+    {
+      "message": "unexpected ident token: expected \\n or ; or }",
+      "code": "rego_parse_error",
+      "location": {
+        "file": "policies/soc2.rego",
+        "row": 13,
+        "col": 28
+      },
+      "details": {
+        "line": "    not input.resource.ami in valid_amis",
+        "idx": 27
+      }
+    }
+  ]
+}
