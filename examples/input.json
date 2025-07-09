@@ -1,7 +1,6 @@
 {
   "resource": {
     "type": "aws_s3_bucket",
-    "name": "customer-data",
     "encryption": {
       "enabled": false
     }

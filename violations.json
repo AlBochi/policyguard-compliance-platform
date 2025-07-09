@@ -1,17 +1,18 @@
 {
-  "errors": [
+  "result": [
     {
-      "message": "unexpected ident token: expected \\n or ; or }",
-      "code": "rego_parse_error",
-      "location": {
-        "file": "policies/soc2.rego",
-        "row": 13,
-        "col": 28
-      },
-      "details": {
-        "line": "    not input.resource.ami in valid_amis",
-        "idx": 27
-      }
+      "expressions": [
+        {
+          "value": [
+            "SOC 2 CC6.1 violation: S3 encryption not enabled"
+          ],
+          "text": "data.soc2.deny",
+          "location": {
+            "row": 1,
+            "col": 1
+          }
+        }
+      ]
     }
   ]
 }

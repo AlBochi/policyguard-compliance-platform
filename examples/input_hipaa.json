@@ -1,0 +1,9 @@
+{
+  "resource": {
+    "type": "aws_s3_bucket",
+    "name": "company-phi-data",
+    "encryption": {
+      "enabled": false
+    }
+  }
+}
