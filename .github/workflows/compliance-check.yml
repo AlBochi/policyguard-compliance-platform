@@ -1,27 +1,26 @@
 name: Compliance Gate
-on: [pull_request]
+on:
+  pull_request:
 
 jobs:
   compliance-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
       
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-        
-      - name: Convert to JSON
-        run: terraform show -json tfplan > tfplan.json
-        
-      - name: OPA Compliance Check
+      - name: Download OPA binary
         run: |
           wget https://openpolicyagent.org/downloads/v0.58.0/opa_linux_amd64_static -O opa
           chmod +x opa
+      
+      - name: Run OPA compliance evaluation
+        run: |
+          terraform plan -out=tfplan
+          terraform show -json tfplan > tfplan.json
           ./opa eval -i tfplan.json -d policies/ "data.soc2.deny" > violations.json
-          jq '.result | length' violations.json
           if [ $(jq '.result | length' violations.json) -gt 0 ]; then
             echo "❌ Compliance violations detected!"
             cat violations.json
             exit 1
           fi
+
